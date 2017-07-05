@@ -1,0 +1,13 @@
+<%= link_to "New Post", new_user_post_path(@user), class: "btn btn-primary" %>
+<br>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <%= image_tag post.avatar.url %>
+    <br>
+    <p> <%= post.description %> </p>
+    <p> Author: <%= post.author %> </p>
+    <p> Post ID: <%= link_to post.id, user_post_path(@user, post) %> </p>
+  <% end %>
+<% else %>
+  <h4>no posts yet for this user yet yo yet </h4>
+<% end %>

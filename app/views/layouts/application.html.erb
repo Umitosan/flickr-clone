@@ -8,9 +8,22 @@
   </head>
 
   <body>
-    <div class="container">
-      <h1>stuff</h1>
+    <div class="nav">
+      <ul>
+        <li class="home"><%= link_to "Home", root_path %></li>
+        <li class="admin"><%= link_to "Admin", root_path %></li>
+      </ul>
     </div>
-    <%= yield %>
+    <div class="container">
+      <% if current_user %>
+        <%= current_user.email %> | <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+      <%= flash[:alert] %>
+      <%= flash[:notice] %>
+      <h1>Flickr</h1>
+        <%= yield %>
+    </div>
   </body>
 </html>

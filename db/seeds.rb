@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Post.destroy_all
+
+50.times do |i|
+  someProduct = Product.create!(name: Faker::Hacker.abbreviation,
+                                cost: Faker::Commerce.price,
+                                country: Faker::Address.country
+  )
+  5.times do |j|
+    someReview = someProduct.reviews.create!(author: Faker::RickAndMorty.character,
+                                             body: Faker::Lorem.sentence(15),
+                                             rating: (1 + rand(5))
+  )
+  end
+end
+
+p "Created #{Post.count} products"
