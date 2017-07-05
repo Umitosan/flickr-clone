@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   def home
+    @users = User.all
     @user = current_user
     @post = Post.new
   end
@@ -36,14 +37,16 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
+    @user = current_user
+    @post = @user.posts.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "Post edited successfully"
-      redirect_to post_path(@post)
+      flash[:notice] = "Post updated successfully"
+      redirect_to user_posts_path(@user)
     else
-      render :edit
+      redirect_to :edit
     end
   end
+
 
   def destroy
     @user = current_user
@@ -55,6 +58,8 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     end
   end
+
+
 
 private
   def post_params

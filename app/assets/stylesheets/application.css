@@ -47,7 +47,7 @@ body {
 .nav a {
   text-decoration: none;
   color: #fff;
-  display: block;
+  display: inline-block;
   transition: .3s background-color;
 }
 
@@ -72,8 +72,16 @@ body {
 
   /* Option 1 - Display Inline */
   .nav li {
-    display: inline-block;
-    margin-right: -4px;
+    display: inline;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .nav-left {
+    float: left;
+  }
+  .nav-right {
+    float: right;
   }
 
   /* Options 2 - Float

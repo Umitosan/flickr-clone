@@ -1,17 +1,47 @@
 <%= render('layouts/errors', :object => @post ) %>
 
-<%= form_for @post, url: user_posts_path(current_user), html: { multipart: true } do |f| %>
-<div class="form-group">
-  <%= f.label :author %>
-  <%= f.text_field :author, class: 'form-control' %>
-</div>
-<div class="form-group">
-  <%= f.label :description %>
-  <%= f.text_field :description, class: 'form-control' %>
-</div>
-<div class="form-group">
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
-</div>
-<%= f.submit class: "btn btn-success" %>
+<% if @post.id? %>
+  <%= form_for @post, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :author %>
+    <%= f.text_field :author, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar %>
+    <br>
+    <%= f.file_field :avatar %>
+    <br>
+    <% if @post.avatar? %>
+    <%= image_tag @post.avatar.url %>
+    <% end %>
+    <br>
+  </div>
+  <%= f.submit class: "btn btn-success" %>
+<% end %>
+<% else %>
+  <%= form_for @post, url: user_posts_path(current_user), html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :author %>
+    <%= f.text_field :author, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar %>
+    <br>
+    <%= f.file_field :avatar %>
+    <br>
+    <% if @post.avatar? %>
+    <%= image_tag @post.avatar.url %>
+    <% end %>
+    <br>
+  </div>
+  <%= f.submit class: "btn btn-success" %>
+<% end %>
 <% end %>

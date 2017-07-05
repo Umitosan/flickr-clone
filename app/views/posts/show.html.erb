@@ -3,4 +3,5 @@
 <p> - <%= @post.author %></p>
 <%= image_tag @post.avatar.url %>
 <br>
-<%= link_to 'delete post', user_post_path(@user, @post), method: 'delete' %>
+<%= link_to 'delete post', user_post_path(@user, @post), method: 'delete' %> |
+<%= link_to 'update post', edit_user_post_path(@user, @post) %>
