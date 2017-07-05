@@ -1,3 +1,3 @@
-class PostsController < ActionController::Base
+class ApplicationController < ApplicationController
 
 end
