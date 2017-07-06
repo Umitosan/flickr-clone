@@ -16,7 +16,7 @@
         </div>
         <div class="nav-right">
         <% if current_user %>
-            <li class="user"><%= current_user.email %> </li><li>  <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %> </li>
+            <li class="user"><%= link_to current_user.email, user_posts_path(current_user) %> </li><li>  <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %> </li>
         <% else %>
             <li><%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %></li>
         <% end %>

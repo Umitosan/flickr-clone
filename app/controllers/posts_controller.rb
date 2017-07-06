@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @posts = @user.posts.all
   end
 
@@ -17,8 +17,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @post = current_user.posts.new(post_params)
+    @user = User.find(params[:user_id])
+    @post = @user.posts.new(post_params)
+    # byebug
     if @post.save
       flash[:notice] = "Post created successfully"
       redirect_to user_posts_path(@user)
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
   end
 
@@ -49,7 +50,7 @@ class PostsController < ApplicationController
 
 
   def destroy
-    @user = current_user
+    @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     if @post.destroy
       flash[:notice] = "Post destroyed successfully"
@@ -63,7 +64,7 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:author, :description, :avatar)
+    params.require(:post).permit(:description, :avatar)
   end
 
 end

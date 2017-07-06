@@ -1,12 +1,13 @@
-<%= link_to "New Post", new_user_post_path(@user), class: "btn btn-primary" %>
-
+<% unless is_admin? %>
+  <%= link_to "New Post", new_user_post_path(@user), class: "btn btn-primary" %>
+<% end %>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <p> Post ID: <%= link_to post.id, user_post_path(@user, post) %> </p>
     <%= image_tag post.avatar.url(:thumb) %>
     <br>
     <p> <%= post.description %> </p>
-    <p> Author: <%= post.author %> </p>
+    <p> Author: <%= @user.username %> </p>
     <hr>
   <% end %>
 <% else %>

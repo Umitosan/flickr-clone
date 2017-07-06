@@ -11,13 +11,18 @@ User.destroy_all
 Post.destroy_all
 Tag.destroy_all
 
-5.times do |i|
+10.times do |i|
   someName = Faker::Internet.user_name
   someUser = User.create!(username: someName,
                           email: Faker::Internet.safe_email(someName),
                           password: Faker::Internet.password,
                           admin: false
   )
+  # 6.times do |j|
+  #   somePost = someUser.posts.create!(description: 'description here'
+  #                                     avatar_file_name: "mario.png"
+  #   )
+  # end
 end
 
 # admin user
@@ -30,3 +35,12 @@ User.create!(username: 'topadmin',
 p "Created #{User.count} users"
 p "Created #{Post.count} posts"
 p "Created #{Tag.count} tags"
+
+
+
+
+# Image.create({
+#   :id => 52,
+#   :asset => File.new("#{Rails.root}/path/to/somefile.jpg"),
+#   :product_id => 52
+# })
