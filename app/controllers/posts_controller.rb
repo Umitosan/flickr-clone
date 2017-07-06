@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 
   def home
-    @users = User.all
-    @user = current_user
-    @post = Post.new
+    # @users = User.all
+    # @user = current_user
+    # @post = Post.new
+    @posts = Post.all
   end
 
   def index

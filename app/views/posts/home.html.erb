@@ -1,8 +1,0 @@
-<h1>All Users</h1>
-
-<% if current_user %>
-  <% @users.each do |user| %>
-    <p><%= link_to user.id, user_posts_path(user) %></p>
-  <% end %>
-   <% link_to "User Page", user_posts_path(@user) %>
-<% end %>

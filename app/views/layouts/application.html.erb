@@ -12,21 +12,23 @@
       <ul>
         <div class="nav-left">
           <li class="home"><%= link_to "Home", root_path %></li>
-          <li class="admin"><%= link_to "Admin", root_path %></li>
+          <li class="admin"><%= link_to "Admin", admins_path %></li>
         </div>
         <div class="nav-right">
         <% if current_user %>
-            <li><%= current_user.email %> </li><li>  <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %> </li>
+            <li class="user"><%= current_user.email %> </li><li>  <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %> </li>
         <% else %>
             <li><%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
+    <div class="row" id="logo">
+      <h1>Flickr</h1>
+    </div>
     <div class="container">
 
       <%= flash[:alert] %>
       <%= flash[:notice] %>
-      <h1>Flickr</h1>
         <%= yield %>
     </div>
   </body>

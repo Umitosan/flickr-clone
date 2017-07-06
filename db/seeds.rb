@@ -5,19 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Post.destroy_all
 
-50.times do |i|
-  someProduct = Product.create!(name: Faker::Hacker.abbreviation,
-                                cost: Faker::Commerce.price,
-                                country: Faker::Address.country
+
+User.destroy_all
+Post.destroy_all
+Tag.destroy_all
+
+5.times do |i|
+  someName = Faker::Internet.user_name
+  someUser = User.create!(username: someName,
+                          email: Faker::Internet.safe_email(someName),
+                          password: Faker::Internet.password,
+                          admin: false
   )
-  5.times do |j|
-    someReview = someProduct.reviews.create!(author: Faker::RickAndMorty.character,
-                                             body: Faker::Lorem.sentence(15),
-                                             rating: (1 + rand(5))
-  )
-  end
 end
 
-p "Created #{Post.count} products"
+# admin user
+User.create!(username: 'topadmin',
+            email: 'topadmin@gmail.com',
+            password: '1234567',
+            admin: true
+)
+
+p "Created #{User.count} users"
+p "Created #{Post.count} posts"
+p "Created #{Tag.count} tags"

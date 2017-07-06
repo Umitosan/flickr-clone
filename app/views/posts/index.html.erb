@@ -1,10 +1,9 @@
 <%= link_to "New Post", new_user_post_path(@user), class: "btn btn-primary" %>
-<br>
-<hr>
+
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <p> Post ID: <%= link_to post.id, user_post_path(@user, post) %> </p>
-    <%= image_tag post.avatar.url %>
+    <%= image_tag post.avatar.url(:thumb) %>
     <br>
     <p> <%= post.description %> </p>
     <p> Author: <%= post.author %> </p>

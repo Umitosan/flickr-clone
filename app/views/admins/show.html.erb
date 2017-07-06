@@ -1,0 +1,9 @@
+<h1>All Users</h1>
+
+<% if current_user %>
+  <% @users.each do |user| %>
+  <p>
+    <%= link_to user.username, user_posts_path(user) %>
+  </p>
+  <% end %>
+<% end %>
