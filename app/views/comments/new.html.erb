@@ -1,0 +1,5 @@
+<h1>New comment</h1>
+<p><%= @post.description %></p>
+<%= image_tag @post.avatar.url, class: 'post-image' %>
+<%= render 'layouts/errors', object: @comment %>
+<%= render 'form' %>

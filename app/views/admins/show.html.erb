@@ -2,11 +2,11 @@
 <% if current_user && is_admin? %>
 <h1>All Users</h1>
   <% @users.each do |user| %>
-  <p>
-    <%= link_to user.username, user_posts_path(user) %>
-  </p>
-  <%# binding.pry %>
-  <%= link_to "Remove User", user_path(user), method: 'delete' %>
+  <div class="listed-user">
+    <div class="row">
+    <p><%= link_to user.username, user_posts_path(user) %> || <%= link_to "Remove User", user_path(user), method: 'delete' %></p>
+    </div>
+  </div>
   <% end %>
 <% else %>
   <h1>Admin Only</h1>

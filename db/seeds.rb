@@ -18,11 +18,14 @@ Tag.destroy_all
                           password: Faker::Internet.password,
                           admin: false
   )
-  # 6.times do |j|
-  #   somePost = someUser.posts.create!(description: 'description here'
-  #                                     avatar_file_name: "mario.png"
-  #   )
-  # end
+  6.times do |j|
+    somePost = someUser.posts.create!(description: 'description here'
+    )
+    3.times do |k|
+      somePost.tags.create!(label: 'test tag'
+      )
+    end
+  end
 end
 
 # admin user

@@ -1,0 +1,5 @@
+<h1>Add a new Tag</h1>
+<p><%= @post.description %></p>
+<%= image_tag @post.avatar.url, class: 'post-image' %>
+<%= render 'layouts/errors', object: @tag %>
+<%= render 'form' %>

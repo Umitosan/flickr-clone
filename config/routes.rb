@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :tags
   end
 
+  resources :posts do
+    resources :comments
+  end
+
   resources :users do
     resources :posts
   end
