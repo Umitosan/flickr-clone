@@ -18,7 +18,6 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = current_user.posts.new(post_params)
-    # byebug
     if @post.save
       flash[:notice] = "Post created successfully"
       redirect_to user_posts_path(@user)
